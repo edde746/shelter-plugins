@@ -90,7 +90,6 @@ export function onLoad() {
 
   let closeModal = null;
   const openGenerationModal = async () => {
-    let hasValidKey = store.openaiKey?.startsWith("sk-");
     let savedModel = store.model || "gpt-3.5-turbo";
 
     let model = savedModel;
@@ -195,18 +194,6 @@ export function onLoad() {
             >
               Generate
             </Button>
-            <Button
-              look={ButtonLooks.LINK}
-              grow={true}
-              onClick={() => {
-                // i am not designing this...
-                const key = window.prompt("Enter your OpenAI key");
-                store.openaiKey = key;
-                hasValidKey = true;
-              }}
-            >
-              {hasValidKey ? "Change" : "Set"} OpenAI key
-            </Button>
           </div>
         </ModalFooter>
       </ModalRoot>
@@ -249,3 +236,5 @@ export function onUnload() {
   unobserve();
   popupButton?.remove();
 }
+
+export { default as settings } from "./settings";
