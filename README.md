@@ -1,7 +1,5 @@
-# gpt-shelter-plugin
+# shelter-plugins
 
-A shelter plugin for [shelter](https://github.com/uwu/shelter). The code is terrible, but I believe there is no better way to achieve this.
+`https://edde746.github.io/shelter-plugins/gpt` - Generate responses based on recent messages in the channel and a prompt.
 
-## Usage
-
-TODO
+![GPT Plugin Showcase](/previews/gpt.png)
