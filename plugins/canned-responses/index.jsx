@@ -14,6 +14,7 @@ const {
     TextArea,
     TextBox,
     niceScrollbarsClass,
+    showToast,
   },
   plugin: { store },
   util: { getFiber },
@@ -89,6 +90,34 @@ const managementModal = () => (
         ))}
       </div>
     </ModalBody>
+    <ModalFooter>
+      <div className="buttons-container">
+        <Button
+          onClick={() => {
+            // copy store.responses to clipboard
+            navigator.clipboard.writeText(JSON.stringify(store.responses));
+            showToast({
+              title: "Exported",
+              content: "Canned responses copied to clipboard",
+              duration: 3000,
+            });
+          }}
+          grow={true}
+        >
+          Export
+        </Button>
+        <Button
+          onClick={async () => {
+            // import store.responses from clipboard
+            const text = await navigator.clipboard.readText();
+            store.responses = JSON.parse(text);
+          }}
+          grow={true}
+        >
+          Import
+        </Button>
+      </div>
+    </ModalFooter>
   </ModalRoot>
 );
 
@@ -185,6 +214,11 @@ const toggleSendingPopup = () => {
 let unobserve = null;
 export function onLoad() {
   injectCss(`
+.buttons-container {
+  display: flex;
+  gap: .5rem;
+}
+
   .send-responses {
     max-height: 200px;
     overflow-y: auto;
