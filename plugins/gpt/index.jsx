@@ -156,7 +156,7 @@ export function onLoad() {
 
                 // add loading indicator
                 const messageBar = document.querySelector(
-                  '[class*="slateContainer-"]'
+                  '[class*="slateContainer"]'
                 );
                 // get absolute position of messagebar
                 const { x, y } = messageBar.getBoundingClientRect();
