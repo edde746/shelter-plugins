@@ -124,7 +124,7 @@ const managementModal = () => (
 // Credits to yellowsink for this messagebar stuff
 // https://github.com/yellowsink
 const appendTextToMessagebar = (text) => {
-  const elem = document.querySelector('[class*="slateContainer-"]');
+  const elem = document.querySelector('[class*="slateContainer"]');
   const fiber = getFiber(elem);
   const editor = fiber.child.pendingProps.editor;
 
